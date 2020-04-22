@@ -2,6 +2,7 @@ package com.example.dogbreed.util
 
 import android.content.Context
 import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -26,4 +27,12 @@ fun ImageView.loadImage(uri: String?, progressDrawable: CircularProgressDrawable
         .setDefaultRequestOptions(options)
         .load(uri)
         .into(this) // "this" refers to the ImageView class
+}
+
+/* this value android:imageUrl will be available in the <ImageView> tag inside item_dog.xml and it'll
+ be the url source for the image to be populated
+*  */
+@BindingAdapter("android:imageUrl")
+fun bindingLoadImage(view: ImageView, url: String?) {
+    view.loadImage(url, getProgressDrawable(view.context))
 }
