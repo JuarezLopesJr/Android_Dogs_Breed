@@ -35,7 +35,9 @@ class DogListAdapter(val dogList: ArrayList<DogBreed>) : RecyclerView.Adapter<Do
         holder.view.dogName.text = dogList[position].dogBreed
         holder.view.lifespan.text = dogList[position].lifeSpan
         holder.view.setOnClickListener {
-            Navigation.findNavController(it).navigate(ListFragmentDirections.actionDetailFragment())
+            val action = ListFragmentDirections.actionDetailFragment()
+            action.dogUuid = dogList[position].uuid
+            Navigation.findNavController(it).navigate(action)
         }
         /* this method loadImage is from the ImageView class extension function created at the
          util/Util.kt. This imageView, points to the ImageView component in the item_dog.xml

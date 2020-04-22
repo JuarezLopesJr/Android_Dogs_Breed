@@ -16,10 +16,11 @@ fun getProgressDrawable(context: Context): CircularProgressDrawable {
     }
 }
 
+// ImageView extension function loadImage()
 fun ImageView.loadImage(uri: String?, progressDrawable: CircularProgressDrawable) {
     val options = RequestOptions()
         .placeholder(progressDrawable)
-        .error(R.mipmap.ic_dog_icon)
+        .error(R.mipmap.ic_dog_icon) // treating the exception by displaying a backup image
 
     Glide.with(context)
         .setDefaultRequestOptions(options)

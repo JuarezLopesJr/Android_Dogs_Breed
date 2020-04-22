@@ -41,7 +41,7 @@ class ListFragment : Fragment() {
             dogsList.visibility = View.GONE
             listError.visibility = View.GONE
             loadingView.visibility = View.VISIBLE // my spinner implementation from the fragment_list.xml
-            viewModel.refresh() // starting the refresh spinner
+            viewModel.refreshBypassCache() // starting the refresh spinner and updating from the API
             refreshLayout.isRefreshing = false // remove the little "swipe to refresh" spinner
         }
 
