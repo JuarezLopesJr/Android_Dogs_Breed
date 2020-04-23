@@ -11,4 +11,6 @@
     <string name="dog_purpose">Dog Purpose</string>
     <string name="dog_temperament">Dog Temperament</string>
     <string name="dog_lifespan">Dog Lifespan</string>
+    <string name="cache_duration">cache duration in seconds</string>
+    <string name="settings">Settings</string>
 </resources>

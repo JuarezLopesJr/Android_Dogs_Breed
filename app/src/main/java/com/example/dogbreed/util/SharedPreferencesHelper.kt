@@ -34,4 +34,6 @@ class SharedPreferencesHelper {
     }
 
     fun getUpdateTime() = prefs?.getLong(PREF_TIME, 0)
+
+    fun getPrefsCacheDuration() = prefs?.getString("pref_cache_duration", "")
 }

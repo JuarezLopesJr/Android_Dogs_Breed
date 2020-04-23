@@ -35,6 +35,7 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
 
     // called by the view to retrieve data
     fun refresh() {
+        checkCacheDuration()
         val updateTime = prefsHelper.getUpdateTime()
 
         if (updateTime != null && updateTime != 0L && System.nanoTime() - updateTime < refreshTime) {
@@ -53,6 +54,16 @@ class ListViewModel(application: Application) : BaseViewModel(application) {
         dogs.value = dogList
         loadDogsError.value = false
         loading.value = false*/
+    }
+
+    private fun checkCacheDuration() {
+        val cachePreference = prefsHelper.getPrefsCacheDuration()
+        try {
+            val cachePreferenceInt = cachePreference?.toInt() ?: 5 * 60
+            refreshTime = cachePreferenceInt.times(1000 * 1000 * 1000L)
+        } catch (e: NumberFormatException) {
+            e.printStackTrace()
+        }
     }
 
     // will refresh the data from the endpoint in the swipe to refresh user action
